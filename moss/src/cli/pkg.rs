@@ -118,6 +118,7 @@ struct InfoArgs {
 }
 
 #[derive(Clone, Debug, clap::Args)]
+#[group(required = true)]
 struct ListArgs {
     #[arg(
         short,
