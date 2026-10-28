@@ -243,11 +243,11 @@ impl Command {
         ("sr", &["search"]),       // The least bad option (still not good)
         ("srf", &["search-file"]), // NOTE: This might go away once the search verb is properly realised
         ("sta", &["state", "activate"]),
-        ("stg", &["state", "get-active"]),
-        ("str", &["state", "remove"]),
         ("ste", &["state", "export"]),
+        ("stg", &["state", "get-active"]),
         ("sti", &["state", "info"]),
         ("stl", &["state", "list"]),
+        ("str", &["state", "remove"]),
         ("sts", &["state", "search"]),
         ("stv", &["state", "verify"]),
     ];
@@ -378,6 +378,11 @@ mod tests {
     fn cli_tree_is_valid() {
         let cmd: clap::Command = Command::command();
         cmd.debug_assert();
+    }
+
+    #[test]
+    fn aliases_are_sorted() {
+        assert!(Command::ALIASES.is_sorted_by_key(|(alias, _)| alias));
     }
 
     #[test]
